@@ -4,7 +4,7 @@ Aplikasi Laravel 12 untuk eksplorasi kerawanan banjir Kota Palu. Antarmuka mengg
 
 ## Fitur
 
-- Peta interaktif dengan pilihan K-Means/FCM, filter kategori, penggunaan lahan, dan zona transisi; klik titik untuk rincian.
+- Peta interaktif dengan pilihan K-Means/FCM, filter kategori, penggunaan lahan, dan zona transisi, klik titik untuk rincian.
 - Perbandingan DBI, Silhouette, distribusi kategori, FPC, dan kesepakatan antar model.
 - Data sampel dengan pencarian, pagination, filter, tautan ke titik pada peta, dan ekspor CSV sesuai filter.
 - Analisis titik baru dengan validasi server, CSRF, pembatasan permintaan, serta keanggotaan FCM.
@@ -20,7 +20,7 @@ Buka terminal di folder proyek dan jalankan:
 php artisan serve
 ```
 
-Buka http://127.0.0.1:8000. Biarkan terminal tetap terbuka selama aplikasi digunakan; tekan `Ctrl+C` untuk menghentikan server. Peta dasar dan Google Fonts membutuhkan koneksi internet.
+Buka http://127.0.0.1:8000. Biarkan terminal tetap terbuka selama aplikasi digunakan, tekan `Ctrl+C` untuk menghentikan server. Peta dasar dan Google Fonts membutuhkan koneksi internet.
 
 Jika aplikasi menampilkan pesan bahwa data analisis belum tersedia, jalankan `php artisan flood:prepare` terlebih dahulu. Penjelasan perintah tersebut tersedia pada bagian [Persiapan data analisis](#persiapan-data-analisis).
 
@@ -103,11 +103,11 @@ Jika persiapan gagal, pastikan virtual environment dan dependensi Python sudah t
 
 Sumber ada di `model/`: dataset CSV, notebook penelitian, dan dua model.
 
-Hasil dataset bawaan: 1.426 baris sumber, 1.423 valid, 3 dikecualikan. Kategori tinggi 227, sedang 714, rendah 482 pada kedua model; 82 titik transisi. Angka dihitung dari inferensi model.
+Hasil dataset bawaan: 1.426 baris sumber, 1.423 valid, 3 dikecualikan. Kategori tinggi 227, sedang 714, rendah 482 pada kedua model, 82 titik transisi. Angka dihitung dari inferensi model.
 
-Bundle mencatat scikit-learn 1.9.1; runtime kompatibilitas yang diuji adalah 1.6.1. Aplikasi memakai transformer dan pusat klaster tersimpan. Perintah persiapan menolak hasil apabila prediksi K-Means berbeda dari label pelatihan tersimpan. Seluruh 1.423 label cocok; keanggotaan FCM diverifikasi terhadap `scikit-fuzzy.cmeans_predict` dengan toleransi absolut 1e-10. Jangan mengganti versi dependensi tanpa menjalankan ulang pemeriksaan ini. Muat hanya bundle model tepercaya.
+Bundle mencatat scikit-learn 1.9.1, runtime kompatibilitas yang diuji adalah 1.6.1. Aplikasi memakai transformer dan pusat klaster tersimpan. Perintah persiapan menolak hasil apabila prediksi K-Means berbeda dari label pelatihan tersimpan. Seluruh 1.423 label cocok, keanggotaan FCM diverifikasi terhadap `scikit-fuzzy.cmeans_predict` dengan toleransi absolut 1e-10. Jangan mengganti versi dependensi tanpa menjalankan ulang pemeriksaan ini. Muat hanya bundle model tepercaya.
 
-Koordinat sumber ditafsirkan EPSG:32750 sesuai notebook. Tidak ada berkas batas administrasi di proyek sehingga peta menampilkan titik, bukan poligon kerawanan. Peta dasar OpenStreetMap dan Google Fonts memerlukan internet; titik analisis dan font fallback tetap tersedia ketika sumber eksternal tidak dapat diakses.
+Koordinat sumber ditafsirkan EPSG:32750 sesuai notebook. Tidak ada berkas batas administrasi di proyek sehingga peta menampilkan titik, bukan poligon kerawanan. Peta dasar OpenStreetMap dan Google Fonts memerlukan internet, titik analisis dan font fallback tetap tersedia ketika sumber eksternal tidak dapat diakses.
 
 Tidak ada data cuaca langsung. Derajat keanggotaan FCM, FPC, dan kesepakatan metode bukan probabilitas kejadian atau akurasi prediksi banjir. Label kategori mengikuti pemetaan elevasi dari notebook.
 
