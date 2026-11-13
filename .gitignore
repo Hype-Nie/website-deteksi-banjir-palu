@@ -22,3 +22,10 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+docs/
+
+/.venv
+**/__pycache__/
+
+/test-results/
+/playwright-report/
